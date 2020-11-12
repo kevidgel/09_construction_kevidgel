@@ -1,13 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-struct food
-{
-  char name[256];
-  int rating;
-  double price;
-};
+#include "mystruct.h"
 
 struct food * new_food(char *n, int r, double p)
 {
@@ -20,6 +14,13 @@ struct food * new_food(char *n, int r, double p)
   foo->price = p;
 
   return foo;
+}
+
+void modify_food(struct food *ood, char *n, int r, double p)
+{
+  strncpy(ood->name, n, sizeof(ood->name)-1);
+  ood->rating = r;
+  ood->price = p;
 }
 
 void print_food(struct food *ood)
